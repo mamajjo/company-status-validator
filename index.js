@@ -1,4 +1,5 @@
 const apiService = require("./lib/apiService");
+const argumentCheckerService = require("./lib/argumentCheckerService");
 const questionService = require("./lib/inquirer");
 const chalk = require('chalk');
 const clear = require('clear');
@@ -6,6 +7,7 @@ const figlet = require('figlet');
 const nullArg = { _: [] };
 let number, numberType;
 var argv = require('minimist')(process.argv.slice(2), {
+    string: ['_']
 });
 
 
@@ -17,8 +19,13 @@ console.log(
     )
 );
 console.log(argv, nullArg);
-if (JSON.stringify(argv) === JSON.stringify(nullArg)) {
-    console.log("elo");
+if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
+    let checkedArguments = argumentCheckerService.checkGivenArguments(argv);
+    checkedArguments.forEach(numberToCheck => {
+        let toCheck = parseInt(numberToCheck);
+        apiService.getStatusByNIP(toCheck);
+    });
+    console.log(checkedArguments);
 } else {
     const loadData = () => new Promise((resolve, reject) => {
         numberType = questionService.askForDataToSearch();
