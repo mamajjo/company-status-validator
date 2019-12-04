@@ -21,7 +21,7 @@ console.log(
 console.log(argv, nullArg);
 if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
     let checkedArguments = argumentCheckerService.checkGivenArguments(argv);
-    checkedArguments.forEach(numberToCheck => {
+    checkedArguments.NIPs.forEach(numberToCheck => {
         let toCheck = parseInt(numberToCheck);
         apiService.getStatusByNIP(toCheck);
     });
