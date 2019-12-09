@@ -9,7 +9,9 @@ let number, numberType;
 var argv = require('minimist')(process.argv.slice(2), {
     string: ['_']
 });
-
+function sleeper(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 clear();
 console.log(argv);
@@ -23,7 +25,14 @@ if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
     let checkedArguments = argumentCheckerService.checkGivenArguments(argv);
     checkedArguments.NIPs.forEach(numberToCheck => {
         let toCheck = parseInt(numberToCheck);
-        apiService.getStatusByNIP(toCheck);
+        if (typeof apiService.getStatusByNIP !== 'function') {
+            console.log(apiService.getStatusByNIP);
+        }
+        else {
+            console.log(apiService.getStatusByNIP);
+            console.log("to fncja");
+        }
+        setTimeout(apiService.getStatusByNIP(toCheck), 1500)
     });
     console.log(checkedArguments);
 } else {
