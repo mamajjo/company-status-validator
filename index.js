@@ -32,7 +32,7 @@ if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
             console.log(apiService.getStatusByNIP);
             console.log("to fncja");
         }
-        setTimeout(apiService.getStatusByNIP(toCheck), 1500)
+        apiService.getStatusByNIP(toCheck);
     });
     console.log(checkedArguments);
 } else {
