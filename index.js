@@ -25,14 +25,8 @@ if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
     let checkedArguments = argumentCheckerService.checkGivenArguments(argv);
     checkedArguments.NIPs.forEach(numberToCheck => {
         let toCheck = parseInt(numberToCheck);
-        if (typeof apiService.getStatusByNIP !== 'function') {
-            console.log(apiService.getStatusByNIP);
-        }
-        else {
-            console.log(apiService.getStatusByNIP);
-            console.log("to fncja");
-        }
-        setTimeout(apiService.getStatusByNIP(toCheck), 1500)
+        setTimeout(() => apiService.getStatusByNIP(toCheck), 1500)
+        console.log("done" + toCheck)
     });
     console.log(checkedArguments);
 } else {
