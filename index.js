@@ -14,33 +14,30 @@ function sleeper(ms) {
 }
 
 clear();
-console.log(argv);
 console.log(
     chalk.yellow(
         figlet.textSync('Nip validator', { horizontalLayout: 'full' })
     )
 );
-console.log(argv, nullArg);
 if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
     let checkedArguments = argumentCheckerService.checkGivenArguments(argv);
     checkedArguments.NIPs.forEach(numberToCheck => {
         let toCheck = parseInt(numberToCheck);
         setTimeout(() => apiService.getStatusByNIP(toCheck), 1500)
-        console.log("done" + toCheck)
     });
-    console.log(checkedArguments);
 } else {
-    const loadData = () => new Promise((resolve, reject) => {
-        numberType = questionService.askForDataToSearch();
-        if (numberType !== null) {
-            console.log("juz po");
-            resolve();
-        }
-        else console.log("nie zadziała cos");
-    })
-    loadData().then(result => {
-        number = questionService.askForNumberToSearch();
-    })
+    return console.log("Podaj numery do sprawdzenia jako argumenty do programu")
+    // const loadData = () => new Promise((resolve, reject) => {
+    //     numberType = questionService.askForDataToSearch();
+    //     if (numberType !== null) {
+    //         console.log("juz po");
+    //         resolve();
+    //     }
+    //     else console.log("nie zadziała cos");
+    // })
+    // loadData().then(result => {
+    //     number = questionService.askForNumberToSearch();
+    // })
 }
 // const runTypeQuestion = async () => {
 //     numberType = await questionService.askForDataToSearch();
