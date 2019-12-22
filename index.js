@@ -4,11 +4,14 @@ const questionService = require("./lib/inquirer");
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
-const nullArg = { _: [] };
+const nullArg = {
+    _: []
+};
 let number, numberType;
 var argv = require('minimist')(process.argv.slice(2), {
     string: ['_']
 });
+
 function sleeper(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -16,15 +19,20 @@ function sleeper(ms) {
 clear();
 console.log(
     chalk.yellow(
-        figlet.textSync('Nip validator', { horizontalLayout: 'full' })
+        figlet.textSync('Nip validator', {
+            horizontalLayout: 'full'
+        })
     )
 );
 if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
     let checkedArguments = argumentCheckerService.checkGivenArguments(argv);
     checkedArguments.NIPs.forEach(numberToCheck => {
         let toCheck = parseInt(numberToCheck);
-        setTimeout(() => apiService.getStatusByNIP(toCheck), 1500)
+        apiService.getStatusByNIP(toCheck);
     });
+    checkedArguments.BAs.forEach(numberToCheck => {
+        apiService.getStatusByBA(numberToCheck);
+    })
 } else {
     return console.log("Podaj numery do sprawdzenia jako argumenty do programu")
     // const loadData = () => new Promise((resolve, reject) => {
@@ -46,4 +54,3 @@ if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
 //     number = await questionService.askForNumberToSearch(numberType);
 // };
 // runTypeQuestion();
-
