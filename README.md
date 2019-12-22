@@ -32,7 +32,7 @@ One of common issue might be a faulty npm install procedure. To fix it install h
 ```
 npm i -g better-npm-install
 ```
-And then in root folder type
+And then in root folder type with index.js
 ```
 ni
 ```
