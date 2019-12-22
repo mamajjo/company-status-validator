@@ -25,3 +25,14 @@ You can type number in following format:
 
 ## History
 Your searchings will be saved to history.log file. If it doesn't exist, program will create it in program directory
+
+## Issues
+
+One of common issue might be a faulty npm install procedure. To fix it install https://github.com/imkimchi/ni
+```
+npm i -g better-npm-install
+```
+And then in root folder type
+```
+ni
+```
