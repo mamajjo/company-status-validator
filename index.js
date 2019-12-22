@@ -7,14 +7,9 @@ const figlet = require('figlet');
 const nullArg = {
     _: []
 };
-let number, numberType;
 var argv = require('minimist')(process.argv.slice(2), {
     string: ['_']
 });
-
-function sleeper(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 clear();
 console.log(
