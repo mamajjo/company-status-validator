@@ -30,22 +30,4 @@ if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
     })
 } else {
     return console.log("Podaj numery do sprawdzenia jako argumenty do programu")
-    // const loadData = () => new Promise((resolve, reject) => {
-    //     numberType = questionService.askForDataToSearch();
-    //     if (numberType !== null) {
-    //         console.log("juz po");
-    //         resolve();
-    //     }
-    //     else console.log("nie zadziała cos");
-    // })
-    // loadData().then(result => {
-    //     number = questionService.askForNumberToSearch();
-    // })
 }
-// const runTypeQuestion = async () => {
-//     numberType = await questionService.askForDataToSearch();
-// };
-// const runNumberInput = async () => {
-//     number = await questionService.askForNumberToSearch(numberType);
-// };
-// runTypeQuestion();
