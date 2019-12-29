@@ -23,10 +23,19 @@ if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
     let checkedArguments = argumentCheckerService.checkGivenArguments(argv);
     checkedArguments.NIPs.forEach(numberToCheck => {
         let toCheck = parseInt(numberToCheck);
-        apiService.getStatusByNIP(toCheck);
+        let response = apiService.getStatusByNIP(toCheck);
+        response.then(mes => {
+            console.log(mes);
+        })
     });
     checkedArguments.BAs.forEach(numberToCheck => {
-        apiService.getStatusByBA(numberToCheck);
+        let response = apiService.getStatusByBA(numberToCheck);
+        response.then(mes => {
+            console.log(mes);
+        })
+    })
+    checkedArguments.WrongNumbers.forEach(wrongNumber => {
+        console.log("nieprawidłowy numer" + wrongNumber);
     })
 } else {
     return console.log("Podaj numery do sprawdzenia jako argumenty do programu");
