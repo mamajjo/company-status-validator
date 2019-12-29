@@ -1,12 +1,18 @@
 {
-  "name": "Company Validator",
+  "name": "company-validator",
   "version": "1.0.0",
   "description": "script to control if vat Status is active",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": "https://github.com/mamajjo/company-status-validator",
+  "keywords": [
+    "Electron",
+    "API",
+    "async"
+  ],
   "author": "Maciej Majchrowski",
   "license": "ISC",
   "dependencies": {
@@ -14,12 +20,14 @@
     "clear": "^0.1.0",
     "clui": "^0.3.6",
     "configstore": "^5.0.0",
+    "electron": "^7.1.7",
     "figlet": "^1.2.4",
-    "inquirer": "^7.0.0",
+    "inquirer": "^7.0.1",
     "lodash": "^4.17.15",
     "minimist": "^1.2.0",
     "node-fetch": "^2.6.0",
-    "simple-git": "^1.126.0",
+    "path": "^0.12.7",
+    "simple-git": "^1.129.0",
     "touch": "^3.1.0",
     "winston": "^3.2.1"
   }

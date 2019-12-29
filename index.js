@@ -29,5 +29,5 @@ if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
         apiService.getStatusByBA(numberToCheck);
     })
 } else {
-    return console.log("Podaj numery do sprawdzenia jako argumenty do programu")
+    return console.log("Podaj numery do sprawdzenia jako argumenty do programu");
 }
