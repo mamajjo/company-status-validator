@@ -19,24 +19,40 @@ console.log(
         })
     )
 );
-if (JSON.stringify(argv) !== JSON.stringify(nullArg)) {
-    let checkedArguments = argumentCheckerService.checkGivenArguments(argv);
-    checkedArguments.NIPs.forEach(numberToCheck => {
-        let toCheck = parseInt(numberToCheck);
-        let response = apiService.getStatusByNIP(toCheck);
-        response.then(mes => {
-            console.log(mes);
+let inputBoxHolder = document.getElementById("input-box");
+let inputBoxElement = document.createElement("INPUT");
+let submitButtonHolder = document.getElementById("button-cell");
+let submitButtonElement = document.createElement("button");
+var paragraph = document.getElementById("p");
+inputBoxHolder.appendChild(inputBoxElement);
+inputBoxElement.setAttribute("type", "text");
+inputBoxElement.setAttribute("placeholder", "wprowadź liczby po spacji");
+submitButtonHolder.appendChild(submitButtonElement);
+submitButtonElement.setAttribute("class", "button");
+submitButtonElement.addEventListener('click', function(click, numbersToCheck = inputBoxElement.textContent){
+    console.log(inputBoxElement.textContent);
+    if (!JSON.stringify(numbersToCheck)) {
+        let checkedArguments = argumentCheckerService.checkGivenArguments(numbersToCheck);
+        checkedArguments.NIPs.forEach(numberToCheck => {
+            let toCheck = parseInt(numberToCheck);
+            let response = apiService.getStatusByNIP(toCheck);
+            response.then(mes => {
+                paragraph.textContent += JSON.stringify(mes);
+            })
+        });
+        checkedArguments.BAs.forEach(numberToCheck => {
+            let response = apiService.getStatusByBA(numberToCheck);
+            response.then(mes => {
+                paragraph.textContent += JSON.stringify(mes);
+            })
         })
-    });
-    checkedArguments.BAs.forEach(numberToCheck => {
-        let response = apiService.getStatusByBA(numberToCheck);
-        response.then(mes => {
-            console.log(mes);
+        checkedArguments.WrongNumbers.forEach(wrongNumber => {
+            paragraph.textContent += "nieprawidłowy numer" + wrongNumber
         })
-    })
-    checkedArguments.WrongNumbers.forEach(wrongNumber => {
-        console.log("nieprawidłowy numer" + wrongNumber);
-    })
-} else {
-    return console.log("Podaj numery do sprawdzenia jako argumenty do programu");
+    } else {
+        paragraph.textContent +="Podaj numery do sprawdzenia jako argumenty do programu";
+    }
+});
+verifyTaxStatus: numbersToCheck => {
+    
 }
