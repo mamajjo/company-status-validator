@@ -26,13 +26,17 @@ let submitButtonElement = document.createElement("button");
 var paragraph = document.getElementById("p");
 inputBoxHolder.appendChild(inputBoxElement);
 inputBoxElement.setAttribute("type", "text");
+inputBoxElement.setAttribute("id", "vat-credential");
 inputBoxElement.setAttribute("placeholder", "wprowadź liczby po spacji");
 submitButtonHolder.appendChild(submitButtonElement);
 submitButtonElement.setAttribute("class", "button");
-submitButtonElement.addEventListener('click', function(click, numbersToCheck = inputBoxElement.textContent){
-    console.log(inputBoxElement.textContent);
-    if (!JSON.stringify(numbersToCheck)) {
+submitButtonElement.addEventListener('click', function(click, inputString = inputBoxElement.value){
+    let numbersToCheck = inputString.split(" ");
+    console.log(numbersToCheck);
+    if (JSON.stringify(numbersToCheck)) {
+        console.log("wewnatrz");
         let checkedArguments = argumentCheckerService.checkGivenArguments(numbersToCheck);
+        console.log(checkedArguments, "chcec");
         checkedArguments.NIPs.forEach(numberToCheck => {
             let toCheck = parseInt(numberToCheck);
             let response = apiService.getStatusByNIP(toCheck);
