@@ -38,10 +38,13 @@ let resultTable = new Tabulator("#result-table", {
     ]
 });
 submitButtonElement.addEventListener('click', function(click, inputString = inputBoxElement.value){
+    paragraph.textContent = "";
     let numbersToCheck = inputString.split(" ");
     console.log(numbersToCheck);
+    // 
     if (JSON.stringify(numbersToCheck)) {
         checkedArguments = argumentCheckerService.checkGivenArguments(numbersToCheck);
+        unsuccesfulValidationNumbersElement.nodeValue = ("");
         if (checkedArguments.NoValidationPass.length > 0){
             unsuccesfulValidationNumbersElement.nodeValue += ("Podane numery nie są prawidłowe: ");
             unsuccesfulValidationNumbersElement.nodeValue += checkedArguments.NoValidationPass.join(", ").toString();
