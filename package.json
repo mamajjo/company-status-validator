@@ -33,16 +33,15 @@
     "clui": "^0.3.6",
     "configstore": "^5.0.0",
     "figlet": "^1.2.4",
-    "inquirer": "^7.0.1",
-    "lodash": "^4.17.15",
     "minimist": "^1.2.0",
     "node-fetch": "^2.6.0",
     "path": "^0.12.7",
-    "simple-git": "^1.129.0",
+    "tabulator-tables": "^4.5.3",
     "touch": "^3.1.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "electron": "^7.1.7",
     "electron-builder": "^21.2.0"
   }
 }
