@@ -21,7 +21,7 @@ You can type number in following format:
 ### Bank Account
 * "xxxxxxxxxxxxxxxxxxxxxxxxxx"
 * "xx xxxx xxxx xxxx xxxx xxxx xxxx"
-* "xxxxxxxxxxxxxxxxxxxxxxxxxx"
+* xxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## History
 Your searchings will be saved to history.log file. If it doesn't exist, program will create it in program directory
@@ -58,10 +58,6 @@ You can learn more about each of these components within the [Quick Start Guide]
 To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
 ```bash
-# Clone this repository
-git clone https://github.com/electron/electron-quick-start
-# Go into the repository
-cd electron-quick-start
 # Install dependencies
 npm install
 # Run the app

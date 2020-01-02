@@ -23,6 +23,8 @@ let inputBoxHolder = document.getElementById("input-box");
 let inputBoxElement = document.createElement("INPUT");
 let submitButtonHolder = document.getElementById("button-cell");
 let submitButtonElement = document.createElement("button");
+let unsuccesfulValidationNumbersHolder = document.getElementById("wrong-number-section")
+let unsuccesfulValidationNumbersElement = document.createTextNode("Podane numery nie są prawidłowe: ");
 var paragraph = document.getElementById("p");
 inputBoxHolder.appendChild(inputBoxElement);
 inputBoxElement.setAttribute("type", "text");
@@ -34,9 +36,9 @@ submitButtonElement.addEventListener('click', function(click, inputString = inpu
     let numbersToCheck = inputString.split(" ");
     console.log(numbersToCheck);
     if (JSON.stringify(numbersToCheck)) {
-        console.log("wewnatrz");
         let checkedArguments = argumentCheckerService.checkGivenArguments(numbersToCheck);
-        console.log(checkedArguments, "chcec");
+        unsuccesfulValidationNumbersElement.nodeValue += checkedArguments.NoValidationPass.join(", ").toString();
+        unsuccesfulValidationNumbersHolder.appendChild(unsuccesfulValidationNumbersElement);
         checkedArguments.NIPs.forEach(numberToCheck => {
             let toCheck = parseInt(numberToCheck);
             let response = apiService.getStatusByNIP(toCheck);
@@ -57,6 +59,13 @@ submitButtonElement.addEventListener('click', function(click, inputString = inpu
         paragraph.textContent +="Podaj numery do sprawdzenia jako argumenty do programu";
     }
 });
-verifyTaxStatus: numbersToCheck => {
-    
+function populateAnwserTable(table, rows, columns, jsonMessage) {
+    if (!table) document.createElement('table');
+    for (let i = 0; i < rows; i++) {
+        var row = document.createElement('tr');
+        for (let j = 0; j < columns; j++) {
+            row.appendChild(document.createElement('td'));
+            row.cells[j].appendChild(document.createTextNode(jsonMessage[j]))
+        }
+    }
 }
