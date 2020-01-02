@@ -10,9 +10,9 @@
     "dist": "build"
   },
   "build": {
-    "appId": "your.id",
+    "appId": "electron.company-validator",
     "mac": {
-      "category": "your.app.category.type",
+      "category": "electron.api.app",
       "target": [
         "zip",
         "dmg"

@@ -19,7 +19,6 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
-  mainWindow.toggleDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
