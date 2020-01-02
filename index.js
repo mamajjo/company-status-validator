@@ -51,14 +51,12 @@ submitButtonElement.addEventListener('click', function(click, inputString = inpu
             let toCheck = parseInt(numberToCheck);
             let response = apiService.getStatusByNIP(toCheck);
             response.then(mes => {
-                paragraph.textContent += JSON.stringify(mes);
                 resultData.push({name: mes.name, id: mes.id, statusVat: mes.statusVat})
             })
         });
         checkedArguments.BAs.forEach(numberToCheck => {
             let response = apiService.getStatusByBA(numberToCheck);
             response.then(mes => {
-                paragraph.textContent += JSON.stringify(mes);
                 resultData.push({name: mes.name, id: mes.id, statusVat: mes.statusVat});
             })
         })
