@@ -32,14 +32,16 @@ let resultTable = new Tabulator("#result-table", {
     data: resultData,
     reactiveData: true,
     columns:[
-        {title:"Nazwa", field:"name", width:300},
-        {title:"Numer", field:"id", align:"right"},
-        {title:"Status", field:"statusVat", align:"center"},
+        {title:"Nazwa", field:"name", width:300, widthGrow: 3},
+        {title:"NIP", field:"nip", align:"right", width:88, minWidth:88},
+        {title:"Numer Konta Bankowego", field:"ba", align:"right", width:208, minWidth:208},
+        {title:"Adres siedziby", field:"address", align:"right", width:300, widthGrow: 3},
+        {title:"Status", field:"statusVat", align:"center", width:80},
     ]
 });
 submitButtonElement.addEventListener('click', function(click, inputString = inputBoxElement.value){
     paragraph.textContent = "";
-    let numbersToCheck = inputString.split(" ");
+    let numbersToCheck = inputString.split(/\s+(?=([^"]*"[^"]*")*[^"]*$)|,/).join("").split("\"");
     console.log(numbersToCheck);
     // 
     if (JSON.stringify(numbersToCheck)) {
@@ -54,13 +56,13 @@ submitButtonElement.addEventListener('click', function(click, inputString = inpu
             let toCheck = parseInt(numberToCheck);
             let response = apiService.getStatusByNIP(toCheck);
             response.then(mes => {
-                resultData.push({name: mes.name, id: mes.id, statusVat: mes.statusVat})
+                resultData.push({name: mes.name, nip: mes.nipID, ba:mes.baID, address: mes.address, statusVat: mes.statusVat})
             })
         });
         checkedArguments.BAs.forEach(numberToCheck => {
             let response = apiService.getStatusByBA(numberToCheck);
             response.then(mes => {
-                resultData.push({name: mes.name, id: mes.id, statusVat: mes.statusVat});
+                resultData.push({name: mes.name, nip: mes.nipID, ba:mes.baID, address: mes.address, statusVat: mes.statusVat});
             })
         })
         checkedArguments.WrongNumbers.forEach(wrongNumber => {
