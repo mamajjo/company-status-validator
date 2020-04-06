@@ -33,7 +33,7 @@
     "clui": "^0.3.6",
     "configstore": "^5.0.0",
     "figlet": "^1.2.4",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.5",
     "node-fetch": "^2.6.0",
     "path": "^0.12.7",
     "tabulator-tables": "^4.5.3",
